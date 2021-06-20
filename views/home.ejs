@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      .blog {
+        display: inline-block;
+        padding: 10px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/create">Create</a></li>
+      </ul>
+    </nav>
+    <% for( let i = 0; i < blogs.length; i++ ) { %>
+    <div class="blog">
+      <h1><%=blogs[i].title%></h1>
+      <p><%=blogs[i].content.substring(0,2)%> <a href="/blogs/<%=blogs[i]._id%>">...Read More</a></p>
+      <h4><%=blogs[i].author%></h4>
+    </div>
+    <% } %>
+  </body>
+</html>
