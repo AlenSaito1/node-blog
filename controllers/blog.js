@@ -27,13 +27,11 @@ exports.getEditById = async (req, res) => {
 };
 exports.postEditById = async (req, res) => {
   const { title, content, author } = req.body;
-  const blog = await Blog.findByIdAndUpdate(req.params.id, {
-    $set: {
-      title,
-      content,
-      author,
-    },
-  });
+  const blog = await Blog.findById(req.params.id)
+  blog.title = title;
+  blog.content = content;
+  blog.author = author;
+  await blog.save();
   //   console.log(blog);
   res.redirect('/blogs/' + req.params.id);
 };
