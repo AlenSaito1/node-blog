@@ -9,10 +9,26 @@
       body {
         font-family: sans-serif;
       }
-      .blog {
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      }
+      .card {
         display: inline-block;
+        overflow: hidden;
         padding: 10px;
         border: 2px solid black;
+        height: 150px;
+        width: 150px;
+        margin: 8px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px);
+        grid-auto-rows: auto;
+        grid-gap: 0.5rem;
       }
     </style>
   </head>
@@ -22,12 +38,19 @@
         <li><a href="/create">Create</a></li>
       </ul>
     </nav>
-    <% for( let i = 0; i < blogs.length; i++ ) { %>
-    <div class="blog">
-      <h1><%=blogs[i].title%></h1>
-      <p><%=blogs[i].content.substring(0,2)%> <a href="/blogs/<%=blogs[i]._id%>">...Read More</a></p>
-      <h4><%=blogs[i].author%></h4>
+    <div class="center">
+      <div class="cards">
+        <% for( let i = 0; i < blogs.length; i++ ) { %>
+        <div class="card">
+          <h1><%=blogs[i].title%></h1>
+          <p>
+            <%=blogs[i].content.substring(0,2)%>
+            <a href="/blogs/<%=blogs[i]._id%>">...Read More</a>
+          </p>
+          <h4><%=blogs[i].author%></h4>
+        </div>
+        <% } %>
+      </div>
     </div>
-    <% } %>
   </body>
 </html>
