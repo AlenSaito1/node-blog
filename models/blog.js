@@ -30,8 +30,8 @@ const blogSchema = new mongoose.Schema(
 
 
 blogSchema.pre('validate', function(next) {
-  if (this.content) this.sanitizedHtml = dompurify.sanitize(marked(this.content))
-  next()
+  if (this.content) this.sanitizedHtml = dompurify.sanitize(marked(this.content));
+  next();
 })
 
 module.exports = mongoose.model('Blog', blogSchema);
